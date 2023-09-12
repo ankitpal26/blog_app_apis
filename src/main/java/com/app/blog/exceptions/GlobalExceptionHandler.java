@@ -39,6 +39,6 @@ public class GlobalExceptionHandler {
 	
 	@ExceptionHandler(HttpRequestMethodNotSupportedException.class)
 	public String handleMethodRequestNotSupported(HttpRequestMethodNotSupportedException ex) {
-		return "Http method supported for this requset";
+		return "Http method not supported for this requset";
 	}
 }
