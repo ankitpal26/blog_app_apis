@@ -23,8 +23,8 @@ import lombok.Setter;
 public class Post {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer postID;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer postId;
 	
 	@Column(name="post_title", length=100, nullable = false)
 	private String title;
@@ -36,7 +36,7 @@ public class Post {
 	private String imageName;
 	
 	@Column(name="date_of_post")
-	private Date addeDate;
+	private Date addDate;
 	
 	@ManyToOne
 	@JoinColumn(name = "category_id")

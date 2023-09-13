@@ -57,13 +57,12 @@ public class PostController {
 	
 //	update post
 	
-	@PutMapping("/user/{userid}/category/{categoryId}/posts")
+	@PutMapping("/posts/{postId}")
 	public ResponseEntity<PostDto> updatePost(
 			@RequestBody PostDto postDto,
-			@PathVariable Integer userId,
-			@PathVariable Integer categoryId
+			@PathVariable Integer postId
 			){
-		PostDto updatePost = this.postService.updatePost(postDto, categoryId);
+		PostDto updatePost=this.postService.updatePost(postDto, postId);
 		return new ResponseEntity<PostDto>(updatePost,HttpStatus.OK);
 		
 	}
@@ -71,18 +70,19 @@ public class PostController {
 	@GetMapping("/posts")
 	public ResponseEntity<List<PostDto>> getAllPosts(){
 		List<PostDto> posts = this.postService.getAllPost();
-		return  ResponseEntity.ok(posts);
+		return  new ResponseEntity<List<PostDto>>(posts,HttpStatus.OK);
 	}
 	
 //	get post by id
-	@GetMapping("/post/{postId}")
+	@GetMapping("/posts/{postId}")
 	public ResponseEntity<PostDto> getById(@PathVariable Integer postId){
-		return ResponseEntity.ok(this.postService.getPostById(postId));
+		PostDto postDto =this.postService.getPostById(postId);
+		return new ResponseEntity<PostDto>(postDto,HttpStatus.OK);
 		
 	}
 	
 //	delete post
-	@DeleteMapping("/post/{postId}")
+	@DeleteMapping("/posts/{postId}")
 	public ResponseEntity<ApiResponse> deletePost(@PathVariable Integer postId){
 		this.postService.delete(postId);
         return new ResponseEntity<ApiResponse>(new ApiResponse("post is deleted successfully !!",true),HttpStatus.OK);		
