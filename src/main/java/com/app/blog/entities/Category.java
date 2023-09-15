@@ -25,7 +25,7 @@ import lombok.Setter;
 public class Category {
 	
 	@Id
-	@GeneratedValue(strategy =GenerationType.AUTO)
+	@GeneratedValue(strategy =GenerationType.IDENTITY)
 	private Integer categoryId;
 	
 	@Column(name = "title", length = 100, nullable = false)
@@ -37,7 +37,5 @@ public class Category {
 	@OneToMany(mappedBy = "category",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private List<Post> posts= new ArrayList<>();
 	
-	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-	 private List<Comments> comments=new ArrayList<>();
 	
 }
