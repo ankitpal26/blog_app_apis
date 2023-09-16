@@ -42,6 +42,8 @@ public class GlobalExceptionHandler {
 		return "Http method not supported for this requset";
 	}
 	
+	
+	//this exception handle ApiException during the invalid login credentials
 	@ExceptionHandler(ApiException.class)
 	public ResponseEntity<ApiResponse> handleApiException(ApiException ex){
 		String message=ex.getMessage();
