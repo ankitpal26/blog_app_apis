@@ -14,9 +14,11 @@ public class BlogAppApisApplication implements CommandLineRunner {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
+	
 	public static void main(String[] args) {
 		SpringApplication.run(BlogAppApisApplication.class, args);
 	}
+	
 	
 	@Bean
 	public ModelMapper modelMapper() {
@@ -25,7 +27,7 @@ public class BlogAppApisApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println(this.passwordEncoder.encode("2001"));
+		System.out.println(this.passwordEncoder.encode("xyz"));
 		
 	}
 

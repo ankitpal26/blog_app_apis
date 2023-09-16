@@ -41,4 +41,11 @@ public class GlobalExceptionHandler {
 	public String handleMethodRequestNotSupported(HttpRequestMethodNotSupportedException ex) {
 		return "Http method not supported for this requset";
 	}
+	
+	@ExceptionHandler(ApiException.class)
+	public ResponseEntity<ApiResponse> handleApiException(ApiException ex){
+		String message=ex.getMessage();
+		ApiResponse apiResponse=new ApiResponse(message,true);
+		return new ResponseEntity<ApiResponse>(apiResponse,HttpStatus.BAD_REQUEST);
+	}
 }
